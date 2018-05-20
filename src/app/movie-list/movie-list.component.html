@@ -1,0 +1,26 @@
+<mat-grid-list cols="5" rowHeight="23rem">
+  <mat-grid-tile
+    *ngFor="let movie of movies"
+    [colspan]="1"
+    [rowspan]="1">
+    <div
+      class="movie-container"
+      [ngClass]="{ 'dark' : movie.isHoveredOver }"
+      (mouseenter)="movie.isHoveredOver = true"
+      (mouseleave)="movie.isHoveredOver = false">
+      <img [hidden]="movie.isHoveredOver" [src]="getFullPosterUrl( movie.poster_path )" />
+      <span [hidden]="movie.isHoveredOver">{{ movie.title }}</span>
+      <span
+        [ngClass]="{ 'visible' : movie.isHoveredOver }"
+        class="movie-details"
+        [hidden]="!movie.isHoveredOver">
+        <span class="movie-title">{{ movie.title }}</span>
+        <span class="movie-release-rating">
+          <span>Released : {{ movie.release_date }}</span>
+          <span>Rating : {{ movie.vote_average }}</span>
+        </span>
+        <span class="movie-description">{{ movie.overview }}</span>
+      </span>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -12,7 +12,7 @@ interface Filter {
 } )
 export class ToolbarComponent implements OnInit {
   public searchForm : FormControl = new FormControl();
-  public selectedFilter : Filter;
+  public selectedFilter : string;
   public filters : Filter[] = [
     {
       name : 'Popularity',
