@@ -1,0 +1,31 @@
+<mat-toolbar role="header" class="app-toolbar">
+  <span class="app-title">Worse IMDB</span>
+  <div class="search-bar">
+    <form class="search-form">
+      <mat-form-field class="search-input">
+        <input
+          type="text"
+          placeholder="Search..."
+          aria-label="Search string"
+          name="movie-search"
+          matInput
+          [formControl]="searchForm"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="filter-select">
+    <mat-form-field>
+      <mat-select [(ngModel)]='selectedFilter'>
+        <mat-option *ngFor="let filter of filters" [value]="filter.name">
+          {{ filter.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-toolbar>
