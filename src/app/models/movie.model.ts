@@ -1,3 +1,4 @@
+/* tslint:disable */
 export class Movie {
     poster_path : string;
     adult : boolean;
@@ -14,3 +15,4 @@ export class Movie {
     video : boolean;
     vote_average : number;
 }
+/* tslint:enable */

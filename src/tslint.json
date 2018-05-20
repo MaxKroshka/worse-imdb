@@ -1,17 +1,71 @@
+
 {
-    "extends": "../tslint.json",
-    "rules": {
-        "directive-selector": [
+    "extends": "tslint-config-airbnb",
+    "rules" : {
+        "import-name" : false,
+        "align" : [
             true,
-            "attribute",
-            "app",
-            "camelCase"
+            "parameters",
+            "statements"
         ],
-        "component-selector": [
+        "array-bracket-spacing" : "always",
+        "comment-format" : false,
+        "function-name" : [
             true,
-            "element",
-            "app",
-            "kebab-case"
+            {
+                "method-regex" : "^[a-z$][\\w\\d]+$",
+                "static-method-regex" : "^[a-z$][\\w\\d]+$"
+            }
+        ],
+        "indent" : [ true, "spaces" ],
+        "max-line-length" : [ true, 180 ],
+        "no-increment-decrement" : false,
+        "no-shadowed-variable" : true,
+        "no-this-assignment" : [ true, { "allow-destructuring" : true } ],
+        "no-var-self" : true,
+        "space-before-function-paren" : false,
+        "space-in-parens" : [ true, "always" ],
+        "ter-indent" : [
+            true,
+            4,
+            {
+                "SwitchCase" : 1
+            }
+        ],
+        "ter-prefer-arrow-callback" : false,
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "onespace",
+                "index-signature": "onespace",
+                "parameter": "onespace",
+                "property-declaration": "onespace",
+                "variable-declaration": "onespace"
+            },
+            {
+                "call-signature": "onespace",
+                "index-signature": "onespace",
+                "parameter": "onespace",
+                "property-declaration": "onespace",
+                "variable-declaration": "onespace"
+            }
+        ],
+        "variable-name" : [
+            true,
+            "check-format",
+            "allow-pascal-case",
+            "allow-leading-underscore",
+            "ban-keywords"
+        ],
+        "whitespace" : [
+            true,
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-type",
+            "check-typecast",
+            "check-preblock"
         ]
     }
 }

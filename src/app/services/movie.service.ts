@@ -4,16 +4,16 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable( {
-  providedIn: 'root'
+    providedIn: 'root',
 } )
 export class MovieService {
 
-  constructor(
-    private http : HttpClient,
-  ){}
+    constructor(
+        private http : HttpClient,
+    ) {}
 
-  getMovies() : Observable<any> {
-    return this.http.get( '/api/movies' ).pipe( map( res => res ) );
-  }
+    getMovies( category ) : Observable<any> {
+        return this.http.get( '/api/movies', { params : { category } } ).pipe( map( res => res ) );
+    }
 
 }

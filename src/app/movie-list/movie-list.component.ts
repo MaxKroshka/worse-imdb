@@ -3,24 +3,24 @@ import { MovieService } from '../services/movie.service';
 import { Movie } from '../models/movie.model';
 
 @Component( {
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
-  styleUrls: [ './movie-list.component.scss' ],
+    selector: 'app-movie-list',
+    templateUrl: './movie-list.component.html',
+    styleUrls: [ './movie-list.component.scss' ],
 } )
-export class MovieListComponent implements OnInit {
-  public movies : Movie[] = [];
-  constructor(
-    private movieService : MovieService,
-  ) {}
+export class MovieListComponent {
+    public movies : Movie[] = [];
+    constructor(
+      private movieService : MovieService,
+    ) {}
 
-  ngOnInit() : void {
-    this.movieService.getMovies().subscribe( ( response ) => {
-      this.movies = response.results;
-    } );
-  }
+    refreshList( category : string ) : void {
+        this.movieService.getMovies( category ).subscribe( ( response ) => {
+            this.movies = response.results;
+        } );
+    }
 
-  getFullPosterUrl( url ) : string {
-    return `https://image.tmdb.org/t/p/w500${ url }`;
-  }
+    getFullPosterUrl( url ) : string {
+        return `https://image.tmdb.org/t/p/w500${ url }`;
+    }
 
 }
