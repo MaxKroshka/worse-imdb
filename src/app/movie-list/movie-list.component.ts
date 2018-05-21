@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../models/movie.model';
-import { movieParams } from './../toolbar/toolbar.component';
-import { PageEvent } from '@angular/material';
+import { movieParams } from '../toolbar/toolbar.component';
+import { PageEvent, MatDialog } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
 @Component( {
     selector: 'app-movie-list',
@@ -14,8 +15,10 @@ export class MovieListComponent {
     public movies : Movie[] = [];
     public totalPages : number = 0;
     @ViewChild( MatPaginator ) paginator : MatPaginator;
+
     constructor(
       private movieService : MovieService,
+      public detailsModal : MatDialog,
     ) {}
 
     refreshList( params : movieParams ) : void {
@@ -36,6 +39,15 @@ export class MovieListComponent {
 
     getFullPosterUrl( url ) : string {
         return url ? `https://image.tmdb.org/t/p/w500${ url }` : '/assets/placeholder.jpg';
+    }
+
+    openMovieDetails( movie : Movie ) : void {
+        this.movieService.getMovieDetails( movie.id ).subscribe( ( response ) => {
+            this.detailsModal.open( MovieDetailsComponent, {
+                width : '50rem',
+                data : response,
+            } );
+        } );
     }
 
 }

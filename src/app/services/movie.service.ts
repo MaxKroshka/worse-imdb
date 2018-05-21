@@ -24,4 +24,8 @@ export class MovieService {
         return this.http.get( '/api/movies', { params } ).pipe( map( res => res ) );
     }
 
+    getMovieDetails( id : any ) : Observable<any> {
+        return this.http.get( '/api/details', { params : { id } } ).pipe( map( res => res ) );
+    }
+
 }

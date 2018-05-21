@@ -1,7 +1,10 @@
 :host {
-  .mat-toolbar {
-    justify-content: space-between;
-    background: #34495e;
-    color: #F5F5F5;
-  }
+    .mat-toolbar {
+        justify-content: space-between;
+        background: #34495e;
+        color: #F5F5F5;
+    }
+    .search-btn {
+        margin-left: 1rem;
+    }
 }

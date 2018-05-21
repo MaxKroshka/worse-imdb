@@ -10,7 +10,8 @@
   <mat-grid-tile
     *ngFor="let movie of movies"
     [colspan]="1"
-    [rowspan]="1">
+    [rowspan]="1"
+    (click)="openMovieDetails( movie )">
     <div
       class="movie-container"
       [ngClass]="{ 'dark' : movie.isHoveredOver }"

@@ -1,0 +1,21 @@
+<div class="movie-container">
+    <img class="movie-poster" [src]="getFullPosterUrl( movie.poster_path )" />
+    <span class="movie-details">
+        <span class="movie-title">{{ movie.title }}</span>
+        <span class="compact-info">
+            <span class="compact-info-cell">{{ getMovieGenres() }}</span>
+            <span class="compact-info-cell">{{ formatMinutes() }}</span>
+            <span class="compact-info-cell">{{ movie.release_date }}</span>
+            <span class="compact-info-cell">{{ movie.vote_average }}</span>
+        </span>
+        <span> Budget : ${{ movie.budget }}</span>
+        <span> Production : ${{ getProdCompanies() }}</span>
+        <span class="movie-description">{{ movie.overview }}</span>
+        <a
+            class="imdb-link"
+            mat-raised-button
+            color="accent"
+            target="_blank"
+            [href]="getImdbUrl()">IMDB</a>
+    </span>
+</div>
