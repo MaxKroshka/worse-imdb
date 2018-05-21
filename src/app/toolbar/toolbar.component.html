@@ -5,7 +5,6 @@
       <mat-form-field class="search-input">
         <input
           type="text"
-          placeholder="Search..."
           aria-label="Search string"
           name="movie-search"
           matInput
@@ -17,12 +16,16 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+      <button
+      (click)="searchMovies()"
+      mat-raised-button
+      color="primary">Search</button>
     </form>
   </div>
   <div class="filter-select">
     <mat-form-field>
-      <mat-select [(ngModel)]='selectedFilter'>
-        <mat-option *ngFor="let filter of filters" [value]="filter.name">
+      <mat-select [(ngModel)]='selectedFilter' (ngModelChange)='selectCategory( $event )'>
+        <mat-option *ngFor="let filter of filters" [value]="filter">
           {{ filter.name }}
         </mat-option>
       </mat-select>

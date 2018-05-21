@@ -1,6 +1,5 @@
 :host {
   .mat-grid-list {
-    margin-top: 2rem;
     .mat-grid-tile {
       .movie-container {
         display: flex;
@@ -12,9 +11,11 @@
         }
         img {
           height: 20rem;
+          width: 13.5rem;
         }
         span {
           align-self: center;
+          width: 12rem;
         }
         .movie-details.visible {
           display: flex;
@@ -22,7 +23,7 @@
           justify-content: space-evenly;
           color: #EDF4FA;
           padding: 1rem;
-          height: 18rem;
+          height: 20rem;
           .movie-title {
             text-align: center;
           }

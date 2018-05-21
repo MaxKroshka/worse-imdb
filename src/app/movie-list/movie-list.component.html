@@ -1,4 +1,12 @@
-<mat-grid-list cols="5" rowHeight="23rem">
+<mat-paginator
+    [showFirstLastButtons]="true"
+    [length]="totalPages"
+    [pageSize]="20"
+    (page)="getNextPage( $event )">
+</mat-paginator>
+<mat-grid-list
+    cols="5"
+    rowHeight="25rem">
   <mat-grid-tile
     *ngFor="let movie of movies"
     [colspan]="1"
@@ -9,7 +17,7 @@
       (mouseenter)="movie.isHoveredOver = true"
       (mouseleave)="movie.isHoveredOver = false">
       <img [hidden]="movie.isHoveredOver" [src]="getFullPosterUrl( movie.poster_path )" />
-      <span [hidden]="movie.isHoveredOver">{{ movie.title }}</span>
+      <span class='card-title' [hidden]="movie.isHoveredOver">{{ movie.title }}</span>
       <span
         [ngClass]="{ 'visible' : movie.isHoveredOver }"
         class="movie-details"

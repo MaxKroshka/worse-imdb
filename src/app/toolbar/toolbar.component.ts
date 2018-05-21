@@ -1,8 +1,15 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+export interface movieParams {
+    category? : string;
+    query? : string;
+    page? : number;
+}
+
 interface Filter {
     name : string;
+    techName : string;
 }
 
 @Component( {
@@ -12,27 +19,38 @@ interface Filter {
 } )
 export class ToolbarComponent implements OnInit {
     public searchForm : FormControl = new FormControl();
-    public selectedFilter : string;
+    public selectedFilter : Filter;
     public filters : Filter[] = [
         {
-            name : 'Popularity',
+            name : 'Top Rated',
+            techName : 'top_rated',
         },
         {
-            name : 'Name',
+            name : 'Popular',
+            techName : 'popular',
         },
         {
-            name : 'Year',
+            name : 'Upcoming',
+            techName : 'upcoming',
+        },
+        {
+            name : 'Now Playing',
+            techName : 'now_playing',
         },
     ];
-    @Output() onSelectCategory : EventEmitter<any> = new EventEmitter();
+    @Output() onRefreshMovieList : EventEmitter<movieParams> = new EventEmitter();
 
     ngOnInit() : void {
-        this.selectedFilter = this.filters[0].name;
+        this.selectedFilter = this.filters[0];
         this.selectCategory( this.selectedFilter );
     }
 
-    selectCategory( category : string ) : void {
-        this.onSelectCategory.emit( { category } );
+    selectCategory( category : Filter ) : void {
+        this.onRefreshMovieList.emit( { category : category.techName } );
+    }
+
+    searchMovies() : void {
+        this.onRefreshMovieList.emit( { query : this.searchForm.value } );
     }
 
 }

@@ -12,27 +12,31 @@ import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule( {
-  declarations: [
-    AppComponent,
-    MovieListComponent,
-    ToolbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [ AppComponent ]
+    declarations: [
+        AppComponent,
+        MovieListComponent,
+        ToolbarComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatToolbarModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatPaginatorModule,
+    ],
+    providers: [],
+    bootstrap: [ AppComponent ],
 } )
 export class AppModule {}

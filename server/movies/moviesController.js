@@ -5,9 +5,15 @@ const api_key = creds.key;
 
 module.exports = {
   getMovies( req, res ) {
-    axios.get( `${ API }/movie/top_rated?api_key=${ api_key }` )
+    let url;
+    if( req.query.category ) {
+        url = `${ API }/movie/${ req.query.category }?api_key=${ api_key }&page=${ req.query.page || 1 }`;
+    } else {
+        url = `${ API }/search/movie?api_key=${ api_key }&query=${ req.query.query }&page=${ req.query.page || 1 }`;
+    }
+    axios.get( url )
     .then( ( movies ) => {
-      res.status(200).json( movies.data );
+      res.status( 200 ).json( movies.data );
     } )
     .catch( ( error ) => {
       res.status( 500 ).send( error );
